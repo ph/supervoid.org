@@ -44,3 +44,14 @@ jobs:
 
       - name: haunt build
         run: guix shell -m manifest.scm -- haunt build
+
+      - uses: actions/checkout@v3
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@7.0.2
+        with:
+          switches: -avzr --delete
+          path: site/
+          remote_path: /var/www/supervoid.org/
+          remote_host: ${{ secrets.HOST }}
+          remote_user: deploy-web
+          remote_key: ${{ secrets.DEPLOY_KEY }}
