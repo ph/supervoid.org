@@ -2,8 +2,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-name: Test and build
-run-name: Test and build
+name: Build and deploy
+run-name: Build and deploy
 on:
   pull_request:
   push:
@@ -42,8 +42,5 @@ jobs:
       - name: remove other files before linting
         run: rm guix-binary-nightly.x86_64-linux.tar.xz
 
-      - name: install dependencies
-        run: guix shell -m manifest.scm
-
       - name: haunt build
-        run: haunt build
+        run: guix shell -m manifest.scm -- haunt build
