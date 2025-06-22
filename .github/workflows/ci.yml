@@ -11,8 +11,8 @@ on:
       - main
 
 jobs:
-  clippy:
-    name: Run check
+  deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
