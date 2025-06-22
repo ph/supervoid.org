@@ -39,9 +39,6 @@ jobs:
       - name: Ensure no locale warning
         run: test -z "$(guix --version 2>&1 >/dev/null)"
 
-      - name: remove other files before linting
-        run: rm guix-binary-nightly.x86_64-linux.tar.xz
-
       - name: haunt build
         run: guix shell -m manifest.scm -- haunt build
 
