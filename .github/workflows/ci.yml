@@ -45,13 +45,12 @@ jobs:
       - name: haunt build
         run: guix shell -m manifest.scm -- haunt build
 
-      - uses: actions/checkout@v3
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@7.0.2
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
         with:
-          switches: -avzr --delete
-          path: site/
-          remote_path: /var/www/supervoid.org/
-          remote_host: ${{ secrets.HOST }}
-          remote_user: deploy-web
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+            SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
+            ARGS: "-rlgoDzvc -i --delete"
+            SOURCE: "site/"
+            REMOTE_HOST: ${{ secrets.HOST }}
+            REMOTE_USER: ${{ secrets.USER }}
+            TARGET: "/var/www/supervoid.org/"
