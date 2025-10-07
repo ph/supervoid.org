@@ -43,7 +43,7 @@ jobs:
         run: sudo mkdir -p /var/guix/profiles/per-user/runner
 
       - name: change user
-        run: sudo chown -R runner:users /var/log/guix/profiles/per-user/runner
+        run: sudo chown -R runner:users /var/guix/profiles/per-user/runner
         
       - name: haunt build
         run: guix shell -m manifest.scm -- haunt build
