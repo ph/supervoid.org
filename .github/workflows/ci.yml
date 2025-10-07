@@ -39,9 +39,12 @@ jobs:
       - name: Ensure no locale warning
         run: test -z "$(guix --version 2>&1 >/dev/null)"
 
-      - name: whereami
-        run: ls -l /var/guix/profiles/per-user
+      - name: manually create the profile
+        run: mkdir -p /var/guix/profiles/per-user/runner
 
+      - name: change user
+        run: chown -R runner:users /var/log/guix/profiles/per-user/runner
+        
       - name: haunt build
         run: guix shell -m manifest.scm -- haunt build
 
