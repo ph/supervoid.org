@@ -43,7 +43,7 @@ jobs:
         run: guix describe
 
       - name: haunt build
-        run: sudo -E guix shell -m manifest.scm -- haunt build
+        run: guix shell -m manifest.scm -- haunt build
 
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
