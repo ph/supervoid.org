@@ -5,11 +5,11 @@
 	     (haunt reader commonmark)
 	     (haunt site))
 
-(site #:title "supervoid"
+(site #:title "Supervoid"
       #:domain "supervoid.org"
       #:default-metadata
       '((author . "Pier-Hugues Pellerin")
-        (email  . "ph@supervoid.org"))
+        (email  . "ph@heykimo.com"))
       #:readers (list commonmark-reader)
       #:builders (list (blog)
                        (atom-feed)
