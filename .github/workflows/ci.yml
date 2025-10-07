@@ -39,6 +39,9 @@ jobs:
       - name: Ensure no locale warning
         run: test -z "$(guix --version 2>&1 >/dev/null)"
 
+      - name: whereami
+        run: echo $(pwd)
+
       - name: haunt build
         run: guix shell -m manifest.scm -- haunt build
 
