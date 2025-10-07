@@ -56,4 +56,5 @@ jobs:
             SOURCE: "site/"
             REMOTE_HOST: ${{ secrets.HOST }}
             REMOTE_USER: ${{ secrets.USER }}
+            REMOTE_PORT: ${{ secrets.PORT }}
             TARGET: "/var/www/supervoid.org/"
